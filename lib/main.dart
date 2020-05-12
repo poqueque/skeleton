@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:skeleton/providers/screen_state.dart';
 import 'package:skeleton/providers/user.dart';
@@ -15,14 +16,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<ScreenStateProvider>(create: (_) => ScreenStateProvider()),
+        ChangeNotifierProvider<ScreenStateProvider>(
+            create: (_) => ScreenStateProvider()),
         ChangeNotifierProvider<UserProvider>(create: (_) => UserProvider()),
       ],
       child: MaterialApp(
         title: 'Flutter Skeleton App',
         theme: ThemeData(
-          primarySwatch: Colors.deepPurple,
-        ),
+            primarySwatch: Colors.deepPurple,
+            textTheme: GoogleFonts.montserratTextTheme(
+              Theme.of(context).textTheme,
+            )),
         home: SplashScreen(),
       ),
     );

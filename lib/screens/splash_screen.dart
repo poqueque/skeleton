@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'base/base_state.dart';
 import 'login_screen.dart';
@@ -53,7 +54,8 @@ class _SplashScreenState extends BaseState<SplashScreen> {
               width: 100,
             ),
             space(),
-            Text(screenStateProvider?.screenStatus),
+            Text(screenStateProvider?.screenStatus,
+            style: GoogleFonts.montserrat()),
           ],
         ),)
       ,
