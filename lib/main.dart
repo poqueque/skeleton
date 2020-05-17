@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:skeleton/providers/screen_state.dart';
+import 'package:skeleton/providers/counter_state.dart';
 import 'package:skeleton/providers/user.dart';
-import 'package:skeleton/screens/splash_screen.dart';
+import 'package:skeleton/views/splash_view.dart';
+
+import 'locator.dart';
 
 void main() {
+  setup();
   runApp(MyApp());
 }
 
@@ -16,8 +19,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<ScreenStateProvider>(
-            create: (_) => ScreenStateProvider()),
+        ChangeNotifierProvider<CounterStateProvider>(
+            create: (_) => CounterStateProvider()),
         ChangeNotifierProvider<UserProvider>(create: (_) => UserProvider()),
       ],
       child: MaterialApp(
@@ -27,7 +30,7 @@ class MyApp extends StatelessWidget {
             textTheme: GoogleFonts.montserratTextTheme(
               Theme.of(context).textTheme,
             )),
-        home: SplashScreen(),
+        home: SplashView(),
       ),
     );
   }

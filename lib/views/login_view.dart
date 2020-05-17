@@ -1,37 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_login/flutter_login.dart';
 import 'package:skeleton/animation/fade_animation.dart';
-import 'package:skeleton/providers/screen_state.dart';
-import 'package:skeleton/screens/main_screen.dart';
+import 'package:skeleton/widgets/Space.dart';
 
-import 'base/base_state.dart';
-
-class LoginScreen extends StatefulWidget {
-  LoginScreen({Key key}) : super(key: key);
+class LoginView extends StatefulWidget {
+  LoginView({Key key}) : super(key: key);
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _LoginViewState createState() => _LoginViewState();
 }
 
-class _LoginScreenState extends BaseState<LoginScreen> {
-
+class _LoginViewState extends State<LoginView> {
   final _formKey = GlobalKey<FormState>();
+  var scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
-  Widget buildScreen(BuildContext context) {
-/*    return FlutterLogin(
-      title: 'Test',
-      logo: 'assets/images/app_logo.png',
-      onLogin: _authUser,
-      onSignup: _authUser,
-      onSubmitAnimationCompleted: () {
-        Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) => MainScreen(),
-        ));
-      },
-      onRecoverPassword: _recoverPassword,
-    );*/
+  Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldKey,
       resizeToAvoidBottomInset: false,
       backgroundColor: Color(0xff21254A),
       body: Form(
@@ -39,7 +24,7 @@ class _LoginScreenState extends BaseState<LoginScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            space(size: 20.0),
+            Space(size: 20.0),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.0),
               child: Column(
@@ -79,7 +64,6 @@ class _LoginScreenState extends BaseState<LoginScreen> {
                               ),
                             ),
                             child: TextFormField(
-
                               style: TextStyle(color: Colors.white),
                               decoration: InputDecoration(
                                 fillColor: Colors.white,
@@ -130,17 +114,20 @@ class _LoginScreenState extends BaseState<LoginScreen> {
                   ),
                   FadeAnimation(
                     1,
-                    Container(
-                      height: 50,
-                      margin: EdgeInsets.symmetric(horizontal: 60),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        color: Color.fromRGBO(49, 39, 79, 1),
-                      ),
-                      child: Center(
-                        child: Text(
-                          "Login",
-                          style: TextStyle(color: Colors.white),
+                    GestureDetector(
+                      onTap: _login(),
+                      child: Container(
+                        height: 50,
+                        margin: EdgeInsets.symmetric(horizontal: 60),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          color: Color.fromRGBO(49, 39, 79, 1),
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Login",
+                            style: TextStyle(color: Colors.white),
+                          ),
                         ),
                       ),
                     ),
@@ -168,7 +155,8 @@ class _LoginScreenState extends BaseState<LoginScreen> {
     );
   }
 
-  Future<String> _authUser(LoginData loginData) {}
-
-  Future<String> _recoverPassword(String string) {}
+  _login() {
+    scaffoldKey?.currentState
+        ?.showSnackBar(SnackBar(content: Text(("its correct"))));
+  }
 }
