@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:skeleton/animation/fade_animation.dart';
-import 'package:skeleton/widgets/Space.dart';
+import 'package:skeleton/ui/widgets/Space.dart';
 
 class LoginView extends StatefulWidget {
   LoginView({Key key}) : super(key: key);

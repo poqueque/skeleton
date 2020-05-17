@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:skeleton/providers/counter_state.dart';
 import 'package:skeleton/providers/user.dart';
-import 'package:skeleton/views/splash_view.dart';
+import 'ui/views/splash_view.dart';
 
 import 'locator.dart';
 

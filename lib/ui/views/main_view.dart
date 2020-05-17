@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:skeleton/providers/counter_state.dart';
 
-import '../locator.dart';
+import '../../locator.dart';
 
 class MainView extends StatefulWidget {
   MainView({Key key}) : super(key: key);
