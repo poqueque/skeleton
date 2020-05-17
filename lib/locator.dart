@@ -3,6 +3,7 @@ import 'package:skeleton/providers/counter_state.dart';
 import 'package:skeleton/viewmodels/login_model.dart';
 import 'package:skeleton/viewmodels/main_model.dart';
 
+import 'core/services/api.dart';
 import 'providers/user.dart';
 import 'viewmodels/splash_model.dart';
 
@@ -15,4 +16,6 @@ void setup() {
 
   locator.registerLazySingleton(() => CounterStateProvider());
   locator.registerLazySingleton(() => UserProvider());
+
+  locator.registerLazySingleton(() => Api());
 }

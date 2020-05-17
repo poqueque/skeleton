@@ -23,6 +23,9 @@ class _MainViewState extends State<MainView> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
+                      'Hi, ${model.user}',
+                    ),
+                    Text(
                       'You have pushed the button this many times:',
                     ),
                     Text(

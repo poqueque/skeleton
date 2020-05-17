@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:skeleton/core/model/user.dart';
+import 'package:skeleton/core/services/api.dart';
 import 'package:skeleton/providers/counter_state.dart';
 import 'package:skeleton/providers/user.dart';
 
@@ -19,11 +21,14 @@ class LoginModel extends BaseModel {
   }
 
   UserProvider userProvider = locator<UserProvider>();
+  Api api = locator<Api>();
 
   Future<bool> login(String user, String password) async {
     error = null;
     state = ViewState.Busy;
     await delay(Duration(seconds: 1));
+    User user = await api.getUserProfile(1+Random().nextInt(10));
+    userProvider.user = user.name;
     if (password != "") return true;
     state = ViewState.Idle;
     error = "Wrong username or password";
