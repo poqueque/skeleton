@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:skeleton/providers/counter_state.dart';
+import 'package:skeleton/viewmodels/main_model.dart';
 
-import '../../locator.dart';
+import 'base_view.dart';
 
 class MainView extends StatefulWidget {
-  MainView({Key key}) : super(key: key);
-
   @override
   _MainViewState createState() => _MainViewState();
 }
@@ -14,34 +11,32 @@ class MainView extends StatefulWidget {
 class _MainViewState extends State<MainView> {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<CounterStateProvider>(
-        create: (context) => locator<CounterStateProvider>(),
-        child: Consumer<CounterStateProvider>(
-            builder: (BuildContext context, CounterStateProvider model,
-                    Widget child) =>
-                Scaffold(
-                  appBar: AppBar(
-                    title: Text("Testing Provider"),
-                  ),
-                  body: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          'You have pushed the button this many times:',
-                        ),
-                        Text(
-                          '${locator<CounterStateProvider>().counter}',
-                          style: Theme.of(context).textTheme.headline1,
-                        ),
-                      ],
+    return BaseView<MainModel>(
+        onModelReady: (model) {},
+        builder: (BuildContext context, MainModel model, Widget child) =>
+            Scaffold(
+              appBar: AppBar(
+                title: Text("Testing Provider"),
+              ),
+              body: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      'You have pushed the button this many times:',
                     ),
-                  ),
-                  floatingActionButton: FloatingActionButton(
-                    onPressed: () => locator<CounterStateProvider>().counter++,
-                    tooltip: 'Increment',
-                    child: Icon(Icons.add),
-                  ),
-                )));
+                    Text(
+                      '${model.counter}',
+                      style: Theme.of(context).textTheme.headline1,
+                    ),
+                  ],
+                ),
+              ),
+              floatingActionButton: FloatingActionButton(
+                onPressed: () => model.counter++,
+                tooltip: 'Increment',
+                child: Icon(Icons.add),
+              ),
+            ));
   }
 }

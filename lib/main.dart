@@ -3,9 +3,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:skeleton/providers/counter_state.dart';
 import 'package:skeleton/providers/user.dart';
-import 'ui/views/splash_view.dart';
+import 'package:skeleton/routes.dart';
 
 import 'locator.dart';
+import 'ui/views/splash_view.dart';
 
 void main() {
   setup();
@@ -27,9 +28,13 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Skeleton App',
         theme: ThemeData(
             primarySwatch: Colors.deepPurple,
+            primaryTextTheme: GoogleFonts.montserratTextTheme(
+              Theme.of(context).primaryTextTheme,
+            ),
             textTheme: GoogleFonts.montserratTextTheme(
               Theme.of(context).textTheme,
             )),
+        routes: Routes.getRoutes(),
         home: SplashView(),
       ),
     );

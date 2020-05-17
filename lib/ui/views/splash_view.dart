@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
-import 'package:skeleton/viewmodels/splash_model.dart';
 import 'package:skeleton/ui/widgets/Space.dart';
+import 'package:skeleton/viewmodels/splash_model.dart';
 
-import '../../locator.dart';
+import '../../routes.dart';
 import 'base_view.dart';
-import 'login_view.dart';
-import 'main_view.dart';
 
 class SplashView extends StatefulWidget {
   @override
@@ -15,15 +12,12 @@ class SplashView extends StatefulWidget {
 }
 
 class _SplashViewState extends State<SplashView> {
-
   void workflow(SplashModel model) async {
     bool logged = await model.workflow();
     if (logged)
-      Navigator.of(context)
-          .pushReplacement(MaterialPageRoute(builder: (context) => MainView()));
+      Navigator.pushNamed(context, Routes.Main);
     else
-      Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => LoginView()));
+      Navigator.pushNamed(context, Routes.Login);
   }
 
   @override
